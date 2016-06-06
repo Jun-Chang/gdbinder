@@ -3,23 +3,21 @@
 
 package example
 
-import (
-	"database/sql"
-)
+import "database/sql"
 
 func TestStructClmns() string {
-	return "id,col1,col2,col3,col4,col5,col6,col7,col8,col9,col10"
+	return "id,col1,col2,col3,col4,col5,col6,col7,col8,col9"
 }
 
-func TestStructScan(rs sql.Rows) ([]*TestStruct, error) {
+func TestStructScan(rs *sql.Rows) ([]*TestStruct, error) {
 	bound := []*TestStruct{}
 	for rs.Next() {
 		b := TestStruct{}
-		if err := rs.Scan(&b.ID, &b.Col1, &b.Col2, &b.Col3, &b.Col4, &b.Col5, &b.Col6, &b.Col7, &b.Col8, &b.Col9, &b.Col10); err != nil {
+		if err := rs.Scan(&b.ID, &b.Col1, &b.Col2, &b.Col3, &b.Col4, &b.Col5, &b.Col6, &b.Col7, &b.Col8, &b.Col9); err != nil {
 			return nil, err
 		}
 		bound = append(bound, &b)
 	}
 
-	return nil, bound
+	return bound, nil
 }

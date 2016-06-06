@@ -3,23 +3,21 @@
 
 package example
 
-import (
-	"database/sql"
-)
+import "database/sql"
 
 func TestStruct2Clmns() string {
-	return "id,col1,col2,col3,col4,col5,col6,col7,col8,col9,col10"
+	return "id,col1,col2,col3,col4,col5,col6,col7,col8,col9,col10,col11,col12,col13,col14,col15,col16,col17,col18,col19,col20,col21,col22,col23,col24,col25,col26,col27,col28,col29,col30,col31,col32,col33,col34,col35,col36,col37,col38,col39,col40,col41,col42,col43,col44,col45,col46,col47,col48,col49,col50,col51,col52,col53,col54,col55,col56,col57,col58,col59,col60,col61,col62,col63,col64,col65,col66,col67,col68,col69,col70,col71,col72,col73,col74,col75,col76,col77,col78,col79,col80,col81,col82,col83,col84,col85,col86,col87,col88,col89,col90,col91,col92,col93,col94,col95,col96,col97,col98,col99"
 }
 
-func TestStruct2Scan(rs sql.Rows) ([]*TestStruct2, error) {
+func TestStruct2Scan(rs *sql.Rows) ([]*TestStruct2, error) {
 	bound := []*TestStruct2{}
 	for rs.Next() {
 		b := TestStruct2{}
-		if err := rs.Scan(&b.ID, &b.Col1, &b.Col2, &b.Col3, &b.Col4, &b.Col5, &b.Col6, &b.Col7, &b.Col8, &b.Col9, &b.Col10); err != nil {
+		if err := rs.Scan(&b.ID, &b.Col1, &b.Col2, &b.Col3, &b.Col4, &b.Col5, &b.Col6, &b.Col7, &b.Col8, &b.Col9, &b.Col10, &b.Col11, &b.Col12, &b.Col13, &b.Col14, &b.Col15, &b.Col16, &b.Col17, &b.Col18, &b.Col19, &b.Col20, &b.Col21, &b.Col22, &b.Col23, &b.Col24, &b.Col25, &b.Col26, &b.Col27, &b.Col28, &b.Col29, &b.Col30, &b.Col31, &b.Col32, &b.Col33, &b.Col34, &b.Col35, &b.Col36, &b.Col37, &b.Col38, &b.Col39, &b.Col40, &b.Col41, &b.Col42, &b.Col43, &b.Col44, &b.Col45, &b.Col46, &b.Col47, &b.Col48, &b.Col49, &b.Col50, &b.Col51, &b.Col52, &b.Col53, &b.Col54, &b.Col55, &b.Col56, &b.Col57, &b.Col58, &b.Col59, &b.Col60, &b.Col61, &b.Col62, &b.Col63, &b.Col64, &b.Col65, &b.Col66, &b.Col67, &b.Col68, &b.Col69, &b.Col70, &b.Col71, &b.Col72, &b.Col73, &b.Col74, &b.Col75, &b.Col76, &b.Col77, &b.Col78, &b.Col79, &b.Col80, &b.Col81, &b.Col82, &b.Col83, &b.Col84, &b.Col85, &b.Col86, &b.Col87, &b.Col88, &b.Col89, &b.Col90, &b.Col91, &b.Col92, &b.Col93, &b.Col94, &b.Col95, &b.Col96, &b.Col97, &b.Col98, &b.Col99); err != nil {
 			return nil, err
 		}
 		bound = append(bound, &b)
 	}
 
-	return nil, bound
+	return bound, nil
 }
